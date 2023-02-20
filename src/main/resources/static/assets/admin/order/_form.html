@@ -1,0 +1,33 @@
+<div xmlns:th="http://www.thymeleaf.org">
+<div class="panel panel-default">
+	<div class="panel-heading">ORDER EDITION</div>
+	<div class="panel-body">
+		<div class="row">
+				<div class="row">
+					<div class="form-group col-sm-6">
+						<div>FullName</div>
+						<input ng-model="form.fullname" class="form-control">
+					</div>
+					<div class="form-group col-sm-6">
+						<div>Address</div>
+						<input ng-model="form.address" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-sm-6">
+						<div>Phone</div>
+						<input ng-model="form.phone" class="form-control">
+					</div>
+				</div>
+		</div>
+	</div>
+	<div class="panel-footer text-center">
+		<button ng-click="update()" class="btn btn-success">
+			<b class="glyphicon glyphicon-save"></b>Update
+		</button>
+		<button ng-click="reset()" class="btn btn-info">
+			<b class="glyphicon glyphicon-refresh"></b>Reset
+		</button>
+	</div>
+</div>
+</div>

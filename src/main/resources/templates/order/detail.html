@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/layout/index1 :: dynamic(~{::main})}">
+<body>
+	<main th:Object="${order}">
+
+ <div class="container-fluid my-5 d-flex justify-content-center">
+    <div class="card card-1">
+        <div class="card-header bg-white">
+            <div class="media flex-sm-row flex-column-reverse justify-content-between ">
+                <div class="col my-auto">
+                    <h4 class="mb-0">Thanks for your Order,<span class="change-color">[[${#request.remoteUser}]]</span> !</h4>
+                </div>
+                <div class="col-auto text-center my-auto pl-0 pt-sm-4">
+                    <p class="mb-4 pt-0 Glasses">Your Order</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row justify-content-between mb-3">
+                <div class="col-auto">
+                    <h6 class="color-1 mb-0 change-color">Receipt</h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="card card-2">
+                        <div class="card-body" style="font-size: 12px;">
+                            
+                                
+                                <div class="media-body my-auto text-right">
+                                    <div  class="row my-auto flex-column flex-md-row" th:each="detail: *{orderDetails}" th:object="${detail}">
+                                        <div class="col my-auto" style="font-size: 18px;"> <h7>*<span>[[*{name}]]</span></h7></div>
+                                        <div class="col my-auto" style="font-size: 18px;"> <h7>ID:<span >[[*{id}]]</span></h7></div>
+                                        <div class="col my-auto" style="font-size: 18px;"> <h7>Size: <span>[[*{size}]]</span></h7></div>
+                                        <div class="col my-auto" style="font-size: 18px;"> <h7>Qty: <span>[[*{quantity}]]</span></h7></div>
+                                        <div class="col my-auto" style="font-size: 18px;"> <h7>Color: <span>[[*{color}]]</span></h7></div>
+                                        <div class="col my-auto" style="font-size: 18px;"> <h7>Price: <span>[[*{#numbers.formatDecimal(price,0,
+							'COMMA',0,'POINT')}]]</span><span>vnđ</span></h7></div>
+                                        <div class="col my-auto" style="font-size: 18px;"> <h7>Total: <span>[[*{#numbers.formatDecimal(price*quantity,0,
+							'COMMA',0,'POINT')}]]</span><span>vnđ</span></h7></div>    
+                                        
+                                    </div>
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4"  th:object="${order}">
+                <div class="col" style="margin-left: 10px;">
+                    <div class="row justify-content-between">
+                        <div class="flex-sm-col text-right col" style="margin-left: 50px;">
+                            <p class="mb-1" style="font-size: 18px;"><b>Total bill:<span>[[*{total}]]</span><span> vnđ</span></b></p>
+                        </div>
+                    </div>
+                    
+                    </div>
+                </div>
+            </div>
+            <br></br>
+<br></br>
+            <div class="row invoice" th:Object="${order}" style="margin-left: 10px;">
+                
+                <div class="col-auto">
+                            <p class="mb-1 text-dark"><b>Order Details:</b></p>
+                        </div>
+                        <div class="col">
+                    <div style="font-size: 17px;">Order Number:</div>
+						<input th:field="*{id}" class="form-control" readonly style="width: 60%;font-size: 15px;">
+						<div style="font-size: 17px;">Purchase:</div>
+						<input th:field="*{account.username}" class="form-control"
+							readonly style="width: 60%;font-size: 15px;">
+                    <div style="font-size: 17px;">Purchase Date:</div>
+						<input th:field="*{createDate}" class="form-control" readonly style="width: 60%;font-size: 15px;">
+					<div style="font-size: 17px;">Shipping Address:</div>
+						<textarea th:field="*{address}" class="form-control" readonly style="width: 60%;font-size: 15px;"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+	</main>
+</body>
+</html>

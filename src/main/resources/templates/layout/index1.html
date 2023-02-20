@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="dynamic(main)">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://kit.fontawesome.com/54f0cb7e4a.js"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+
+
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+
+<link href="/assets/css/shopping-cart-app.css" rel="stylesheet">
+<link href="/assets/css/login.css" rel="stylesheet" type="text/css" />
+<link href="/assets/css/style.css" rel="stylesheet" />
+<title>Hello</title>
+</head>
+<body ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
+	<div th:replace="/layout/_menu.html"></div>
+	<br>
+	<div th:if="${#request.remoteUser}" style="margin-top: 65px">
+		<h1>
+			<marquee>
+				Xin Chào! <i style="color: red;">[[${#request.remoteUser}]]</i> |
+				Bạn đã đến với thiên đường thời trang của chúng tôi
+			</marquee>
+		</h1>
+	</div>
+	<div th:replace="${main}"></div>
+<div th:replace="/layout/footer.html"></div> 
+	<script src="/assets/js/shopping-cart-app.js"></script>
+</body>
+
+<script>
+
+const header = document.querySelector("header")
+window.addEventListener("scroll",function(){
+	x= window.pageYOffset
+	if(x>0){
+		header.classList.add("sticky")
+	}
+	else{
+		header.classList.remove("sticky")
+	}
+})	
+
+
+
+
+
+
+</script>
+
+</html>

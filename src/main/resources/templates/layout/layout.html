@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+    th:replace="~{/layout/index1 :: dynamic(~{::main})}">
+   
+<body>
+<main>
+  <section id="Slider">
+<div class="aspect-ratio-169">
+	<img src="/assets/images/index1.jpg">
+	<img src="/assets/images/index2.jpg">
+	<img src="/assets/images/index3.jpg">
+	<img src="/assets/images/index4.jpg">
+	<img src="/assets/images/index5.jpg">
+</div>
+<div class="dot-container">
+	<div class="dot active"></div>
+	<div class="dot"></div>
+	<div class="dot"></div>
+	<div class="dot"></div>
+	<div class="dot"></div>
+</div>
+</section> 
+
+<section class="about section-pading">
+	<div class="conteiner">
+		<div class="row">
+			<div class="section-title">
+				<h2 data-title:="Câu chuyện">Về Chúng tôi</h2>
+			</div>
+		</div>
+		<div class="row">
+				<div class="about-item">
+					<h2>Chào mừng các bạn đến với shop Lucky Man</h2>
+					<p>Shop Thời Trang Online Love Tree với phương châm "Đồng hành cùng phong cách thời trang của bạn" sẽ là nơi mua sắm an toàn và uy tín, bởi chúng tôi luôn đề cao tiêu chí mang đến cho quý khách những sản phẩm chất lượng nhất với giá cả luôn phải chăng.</p>
+					<a href="/gioithieu"><button class="btn">
+						Giới Thiệu
+					</button></a>
+				</div>
+				<div class="about-item">
+					<img src="/assets/images/aodai.jpg" alt="">
+				</div>
+		</div>
+	</div>
+</section>
+
+
+
+<hr  width="100%" size="80px" align="center" />
+<script>
+const imgPosition = document.querySelectorAll(".aspect-ratio-169 img")
+const imgContainer = document.querySelector('.aspect-ratio-169')
+const dotItem = document.querySelectorAll(".dot")
+let imgNumber = imgPosition.length
+let index = 0
+	/* console.log(imgPosition) */
+imgPosition.forEach(function(image,index){
+	image.style.left = index*100 + "%"
+	dotItem[index].addEventListener("click",function(){
+		slider (index)
+	})
+})
+function imgSlide(){
+	index++;
+	console.log(index)
+	if(index >= imgNumber) {
+		index=0
+	}
+	slider (index)
+	
+}
+function slider (index){
+	imgContainer.style.left="-"+index*100+"%"
+	const dotActive = document.querySelector('.active')
+	dotActive.classList.remove("active")
+	dotItem[index].classList.add("active")
+}
+setInterval(imgSlide,5000)
+</script>
+</main>
+</body>
+</html>

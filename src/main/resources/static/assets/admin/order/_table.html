@@ -1,0 +1,119 @@
+<div xmlns:th="http://www.thymeleaf.org">
+	<div class="panel panel-default">
+		<div class="panel-heading" >ORDER
+			LIST</div>
+		<table class="table table-condensed">
+			<thead class="bg-success" style="font-variant: small-caps;">
+				<tr>
+					<th>Id</th>
+					<th>Username</th>
+					<th>Fullname</th>
+					<th>Method</th>
+					<th>Createdata</th>
+					<th>Address</th>
+					<th>Phone</th>
+					<th>Total</th>
+					<th>Status</th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in pagera.items">
+					<td>{{item.id}}</td>
+					<td>{{item.account.username}}</td>
+					<td>{{item.fullname}}</td>
+					<td>{{item.method}}</td>
+					<td>{{item.createDate | date: 'dd-MM-yyyy'}}</td>
+					<td>{{item.address}}</td>
+					<td>{{item.phone}}</td>
+					<td>{{item.total | number }} đ</td>
+					<td style="color:Red">{{item.status}}</td>
+					<td><button type="button" ng-click="huydonhang(item.id)"  class="btn btn-danger">Hủy đơn hàng</button></td>
+					<td><button type="button" ng-click="dagiaohang(item.id)"  class="btn btn-warning">giao hàng</button></td>
+					<td><button type="button" ng-click="dathanhtoan(item.id)" class="btn btn-success">thanh toán</button></td>
+					<td>
+						<div class="btn-group btn-group-xs">
+							<button ng-click="chitietdon(item.id)"
+								class="btn btn-info glyphicon glyphicon-inbox"></button>
+						</div>
+						<div class="btn-group btn-group-xs">
+							<button ng-click="edit(item)"
+								class="btn btn-warning glyphicon glyphicon-edit"></button>
+						</div>
+						<div class="btn-group btn-group-xs">
+							<button ng-click="delete1(item)"
+								class="btn btn-danger glyphicon glyphicon-trash"></button>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="panel-footer text-center">
+			<button ng-click="pagera.first()" class="btn btn-danger">
+				<b class="glyphicon glyphicon-hand-up"></b>
+			</button>
+			<button ng-click="pagera.prev()" class="btn btn-primary">
+				<b class="glyphicon glyphicon-hand-left"></b>
+			</button>
+			<button class="btn btn-success">{{pagera.pagea + 1}} of
+				{{pagera.count}}</button>
+			<button ng-click="pagera.next()" class="btn btn-primary">
+				<b class="glyphicon glyphicon-hand-right"></b>
+			</button>
+			<button ng-click="pagera.last()" class="btn btn-danger">
+				<b class="glyphicon glyphicon-hand-down"></b>
+			</button>
+		</div> 
+		<table class="table table-condensed">
+			<thead class="bg-success" style="font-variant: small-caps;">
+				<tr>
+					<th>Id</th>
+					<th>Fullname</th>
+					<th>Name</th>
+					<th>Height</th>
+					<th>Weight</th>
+					<th>Size</th>
+					<th>Image</th>
+					<th>Color</th>
+					<th>Price</th>
+					<th>Quantity</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item1 in pager.item1s">
+					<td>{{item1.id}}</td>
+					<td>{{item1.order.fullname}}</td>
+					<td>{{item1.name}}</td>
+					<td>{{item1.height}}</td>
+					<td>{{item1.weight}}</td>
+					<td>{{item1.size}}</td>
+					<td>{{item1.image}}</td>
+					<td>{{item1.color}}</td>
+					<td>{{item1.price | number}} đ</td>
+					<td>{{item1.quantity}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="panel-footer text-center">
+			<button ng-click="pager.first()" class="btn btn-danger">
+				<b class="glyphicon glyphicon-hand-up"></b>
+			</button>
+			<button ng-click="pager.prev()" class="btn btn-primary">
+				<b class="glyphicon glyphicon-hand-left"></b>
+			</button>
+			<button class="btn btn-success">{{pager.page + 1}} of
+				{{pager.count}}</button>
+			<button ng-click="pager.next()" class="btn btn-primary">
+				<b class="glyphicon glyphicon-hand-right"></b>
+			</button>
+			<button ng-click="pager.last()" class="btn btn-danger">
+				<b class="glyphicon glyphicon-hand-down"></b>
+			</button>
+		</div> 
+		
+		
+	</div>
+</div>
